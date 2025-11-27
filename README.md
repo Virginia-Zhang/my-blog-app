@@ -30,6 +30,8 @@
 pnpm install
 # または
 npm install
+# または
+yarn install
 ```
 
 ### 開発サーバーの起動
@@ -38,6 +40,8 @@ npm install
 pnpm dev
 # または
 npm run dev
+# または
+yarn dev
 ```
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開いて確認できます。
@@ -93,12 +97,20 @@ my-blog-app/
 
 ```bash
 pnpm build
+# または
+npm run build
+# または
+yarn build
 ```
 
 ### 本番環境での起動
 
 ```bash
 pnpm start
+# または
+npm run start
+# または
+yarn start
 ```
 
 ### Vercel へのデプロイ
