@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 16 ブログデモプロジェクト（Blog Demo Project）
 
-## Getting Started
+このプロジェクトは、Next.js 16 入門シリーズのチュートリアル用に作成されたブログサイトのデモです。
+実際のコードとプロジェクトを通じて、Next.js の機能やベストプラクティスを学ぶことができます。
 
-First, run the development server:
+## プロジェクトの概要
+
+このデモプロジェクトでは、以下の Next.js の主要機能を実装しています：
+
+- **File-system Routing**: App Router を使ったページルーティング
+- **Client-side Navigation**: `<Link>` コンポーネントと `useRouter` Hook
+- **Server-side Navigation**: `redirect` 関数と Proxy（旧 Middleware）
+- **Nested Routes**: 階層構造のあるルーティング
+- **Server Components / Client Components**: コンポーネントの使い分け
+- **共通レイアウト**: `layout.tsx` を使った共通 UI
+
+など……
+
+## セットアップ
+
+### 必要な環境
+
+- Node.js 20.9 以上
+- pnpm / npm / yarn などのパッケージマネージャー
+
+### インストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 依存パッケージのインストール
+pnpm install
+# または
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 開発サーバーの起動
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+# または
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いて確認できます。
 
-## Learn More
+## プロジェクト構造
 
-To learn more about Next.js, take a look at the following resources:
+```
+my-blog-app/
+├── app/                    # App Router のメインディレクトリ
+│   ├── layout.tsx         # ルートレイアウト（共通ヘッダー）
+│   ├── page.tsx           # トップページ
+│   ├── about/             # About ページ
+│   ├── blog/              # ブログ関連ページ
+│   │   ├── page.tsx       # ブログトップ
+│   │   ├── tech/          # 技術ブログ
+│   │   ├── diary/         # 日記
+│   │   └── reviews/       # 映画・音楽レビュー
+│   ├── login/             # ログインページ
+│   └── admin/             # 管理者ページ（認証保護）
+├── app/components/        # 再利用可能なコンポーネント
+│   ├── category-card.tsx
+│   ├── back-button.tsx
+│   └── blog-category-page.tsx
+├── proxy.ts               # Proxy（旧 Middleware）設定
+└── package.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 主な機能
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. ページルーティング
 
-## Deploy on Vercel
+- `/` - トップページ
+- `/about` - About ページ
+- `/blog` - ブログカテゴリ一覧
+- `/blog/tech` - 技術ブログ
+- `/blog/diary` - 日記
+- `/blog/reviews` - 映画・音楽レビュー
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. 画面遷移の実装例
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **`<Link>` コンポーネント**: 通常のリンク遷移
+- **`useRouter` Hook**: プログラム制御による遷移
+- **`redirect` / Proxy**: サーバーサイドでのリダイレクト
+
+### 3. 認証ガード（Proxy）
+
+`/admin` ページへのアクセスは、Proxy によって認証チェックが行われます。
+未認証の場合は `/login` へリダイレクトされます。
+
+## ビルドとデプロイ
+
+### ビルド
+
+```bash
+pnpm build
+```
+
+### 本番環境での起動
+
+```bash
+pnpm start
+```
+
+### Vercel へのデプロイ
+
+[Vercel Platform](https://vercel.com/new) を使用して簡単にデプロイできます。
+
+## 参考資料
+
+- [Next.js 公式ドキュメント](https://nextjs.org/docs)
+- [Next.js 16 入門シリーズ](https://zenn.dev/virginia0314)
+
+## ライセンス
+
+このプロジェクトは学習目的で作成されています。
+
+---
+
+**ご意見やご提案がございましたら、ぜひ PR を送ってください。よろしくお願いします！**
