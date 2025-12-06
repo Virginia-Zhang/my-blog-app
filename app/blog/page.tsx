@@ -1,12 +1,14 @@
 /**
- * ブログトップページコンポーネント
- *
- * ブログのカテゴリ一覧を表示するページです。
- * Nested Routes の例として、複数のカテゴリへのリンクを提供しています。
- *
- * @returns {JSX.Element} ブログトップページの JSX 要素
+ * @file page.tsx
+ * @description Blog top page component displaying categories and latest articles.
+ * @description カテゴリと最新記事を表示するブログトップページコンポーネント。
+ * @author Virginia Zhang
+ * @remarks Uses ArticleCard component for reusable article display and postsData for dynamic content.
+ * @remarks 再利用可能な記事表示のため ArticleCard コンポーネントと動的コンテンツのため postsData を使用。
  */
 import CategoryCard from "@/app/components/category-card";
+import ArticleCard from "@/app/components/article-card";
+import { postsData } from "@/app/data/posts-data";
 
 interface Category {
   href: string;
@@ -16,6 +18,12 @@ interface Category {
 }
 
 export default function BlogPage() {
+  // Sort posts by date in descending order (newest first)
+  // 日付で降順にソート（新しい順）
+  const sortedPosts = [...postsData].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   // カテゴリ情報を配列として管理
   const categories: Category[] = [
     {
@@ -55,6 +63,26 @@ export default function BlogPage() {
           />
         ))}
       </div>
+
+      {/* Latest Articles Section */}
+      {/* 最新記事セクション */}
+      <section className="mt-12">
+        <h2 className="text-xl font-semibold mb-6 text-gray-300">
+          最新記事 (Latest Articles)
+        </h2>
+        <div className="space-y-4">
+          {sortedPosts.map((post) => (
+            <ArticleCard
+              key={post.id}
+              href={`/blog/tech/${post.id}`}
+              title={post.title}
+              intro={post.intro}
+              category={post.category}
+              date={post.date}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

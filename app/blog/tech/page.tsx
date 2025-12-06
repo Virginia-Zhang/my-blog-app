@@ -15,24 +15,19 @@ import BlogCategoryPage from "@/app/components/blog-category-page";
 export default function TechBlogPage() {
   const items = [
     {
-      id: "nextjs-16-features",
-      title: "Next.js 16 の新機能について",
-      link: "https://zenn.dev/virginia0314/articles/685295bc6362da",
+      id: "nextjs-1",
+      title: "Next.js 16 入門 ①：フロントエンド進化と Next.js の登場",
+      link: "/blog/tech/nextjs-1",
     },
     {
-      id: "react-server-components",
-      title: "React Server Components とは",
-      link: "https://zenn.dev/virginia0314/articles/685295bc6362da",
+      id: "nextjs-2-router",
+      title: "Next.js 16 入門 ②：Router システムとレンダリング戦略の完全解説",
+      link: "/blog/tech/nextjs-2",
     },
     {
-      id: "tailwind-css-tips",
-      title: "Tailwind CSS の活用術",
-      link: "https://zenn.dev/virginia0314/articles/685295bc6362da",
-    },
-    {
-      id: "client-server-component",
-      title: "Client Component と Server Component の使い分け",
-      link: "https://zenn.dev/virginia0314/articles/685295bc6362da",
+      id: "nextjs-3",
+      title: "Next.js 16 入門 ③：レンダリング戦略解説：CSR/SSR/SSG/ISR",
+      link: "/blog/tech/nextjs-3",
     },
   ];
 
