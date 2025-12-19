@@ -17,6 +17,7 @@
     "react-dom": "19.2.1"
   },
   "devDependencies": {
+    "@types/bun": "latest",
     "@happy-dom/global-registrator": "^20.0.11",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.1",
