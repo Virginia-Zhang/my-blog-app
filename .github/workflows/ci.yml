@@ -1,0 +1,51 @@
+# @file ci.yml
+# @description GitHub Actions workflow for quality assurance (linting, testing, and building) with Bun.
+# @description GitHub Actions ワークフロー：Bun を使用した品質保証（リント、テスト、ビルド）。
+# @remarks Runs on Ubuntu (Linux) environment as the standard CI platform.
+# @remarks Ubuntu（Linux）環境で標準的な CI プラットフォームとして実行されます。
+
+name: Quality Assurance with Bun
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  quality-check:
+    name: Lint, Test and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      # リポジトリコードをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Bun runtime environment
+      # Bun ランタイム環境をセットアップ
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.4
+
+      # Install project dependencies using frozen lockfile
+      # 凍結されたロックファイルを使用して依存関係をインストール
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Run ESLint to check code style and quality
+      # ESLint を実行してコードスタイルと品質をチェック
+      - name: Run lint
+        run: bun run lint
+
+      # Run tests
+      # テストを実行
+      - name: Run tests
+        run: bun run test
+
+      # Build check to detect TypeScript errors and path issues
+      # TypeScript エラーとパスの問題を検出するためのビルドチェック
+      - name: Build check
+        run: bun run build
