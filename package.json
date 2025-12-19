@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "bun --bun next dev",
+    "build": "bun --bun next build",
+    "start": "bun --bun next start",
+    "test": "bun test tests/",
+    "test:watch": "bun test tests/ --watch",
     "lint": "eslint"
   },
   "dependencies": {
@@ -15,7 +17,11 @@
     "react-dom": "19.2.1"
   },
   "devDependencies": {
+    "@happy-dom/global-registrator": "^20.0.11",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
