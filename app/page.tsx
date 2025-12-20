@@ -1,15 +1,24 @@
 /**
- * トップページコンポーネント
- *
- * サイトのホームページです。
- * Next.js の <Link> コンポーネントを使用した
- * クライアントサイドナビゲーションの例を示しています。
- *
- * @returns {JSX.Element} トップページの JSX 要素
+ * @file page.tsx
+ * @description The main landing page of the blog demo application.
+ * @description ブログデモアプリケーションのメインランディングページ。
+ * @author Virginia Zhang
+ * @remarks This is a Server Component that serves as the entry point for the homepage.
+ * @remarks ホームページの入口となるサーバーコンポーネントです。
  */
 import Link from "next/link"; // 必ず next/link からインポート
 
 export default function Home() {
+  // Log the current runtime for verification in production (Server Side)
+  // 本番環境でのランタイムを検証するためにログ出力（サーバーサイド）
+  console.log(
+    `[Runtime Check] Current runtime: ${
+      process.versions.bun
+        ? "Bun " + process.versions.bun
+        : "Node.js " + process.version
+    }`
+  );
+
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-6">Home ページ</h1>
